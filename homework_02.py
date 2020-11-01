@@ -40,8 +40,8 @@ def _validate_symbols(input_str):
 
 
 def _validate_letters_even(input_str):
-    match_sym = [sym for sym in input_str if sym.isalpha()]
-    if not len(match_sym) % 2:
+    match_let = [let for let in input_str if let.isalpha()]
+    if not len(match_let) % 2:
         return True
     return False
 
@@ -53,8 +53,8 @@ def _validate_letters_even(input_str):
 
 
 def _validate_numbers_odd(input_str):
-    match_num = [sym for sym in input_str if sym.isdigit()]
-    if not len(match_num) % 2:
+    match_numb = [numb for numb in input_str if numb.isdigit()]
+    if not len(match_numb) % 2:
         return True
     return False
 
