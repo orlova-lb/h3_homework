@@ -98,16 +98,10 @@ def _format_output(data):
     email_len = 48
     table_width = first_name_len + last_name_len + data_len + email_len
     line = table_width * '-'
-    print(line)
-    print('|{0:^47}|{1:^63}|{2:^10}|{3:^47}|'.format('First Name', 'Last Name', 'Birth Date', 'Email'))
-    print(line)
-    count = len(data)
-    while count > 0:
-        for item in data:
-            table = f"|{item['first_name']:^47}|{item['last_name']:^63}|{item['birth']:}|{item['email']:^47}|\n" + line
-            print(table)
-            count = count - 1
-    return table
+    table_header = '|{0:^47}|{1:^63}|{2:^10}|{3:^47}|'.format('First Name', 'Last Name', 'Birth Date', 'Email')
+    for item in data:
+        table = f"|{item['first_name']:^47}|{item['last_name']:^63}|{item['birth']:}|{item['email']:^47}|\n" + line
+    return f"{line}\n{table_header}\n{line}\n{table}"
 
 
 def select_from_db(field, value):
@@ -120,9 +114,9 @@ def select_from_db(field, value):
 
 
 in_data = ({"first_name": "Guido", "last_name": "Van Rossum",
-            "birth": date(1969, 6, 27), "email": "iamguido@python.org"},
-            {"first_name": "Not Guido", "last_name": "But Van Rossum",
-            "birth": date(1969, 6, 28), "email": "iamanotherguido@pythonorg"})
+           "birth": date(1969, 6, 27), "email": "iamguido@python.org"},
+           {"first_name": "Not Guido", "last_name": "But Van Rossum",
+           "birth": date(1969, 6, 28), "email": "iamanotherguido@pythonorg"})
 
 
 print(insert_to_db(in_data))
