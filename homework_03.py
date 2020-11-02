@@ -92,6 +92,7 @@ def _format_output(data):
     | значение строки  | значение колонки |
     Возвращает таблицу строкой.
     """
+    table = ''
     first_name_len = 48
     last_name_len = 64
     data_len = 11
@@ -100,8 +101,8 @@ def _format_output(data):
     line = table_width * '-'
     table_header = '|{0:^47}|{1:^63}|{2:^10}|{3:^47}|'.format('First Name', 'Last Name', 'Birth Date', 'Email')
     for item in data:
-        table = f"|{item['first_name']:^47}|{item['last_name']:^63}|{item['birth']:}|{item['email']:^47}|\n" + line
-    return f"{line}\n{table_header}\n{line}\n{table}"
+        table += (f"|{item['first_name']:^47}|{item['last_name']:^63}|{item['birth']:}|{item['email']:^47}|\n")
+    return f"{line}\n{table_header}\n{line}\n{table}{line}"
 
 
 def select_from_db(field, value):
