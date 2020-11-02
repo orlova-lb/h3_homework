@@ -18,7 +18,8 @@ def validate_password(password):
         error_list.append("Сontains an odd number of letters")
     if not _validate_numbers_odd(password):
         error_list.append("Сontains an even number of digits")
-
+    if error_list == '':
+        return  True
     return error_list
 
 
@@ -43,6 +44,8 @@ def _validate_letters_even(input_str):
     match_let = [let for let in input_str if let.isalpha()]
     if not len(match_let) % 2:
         return True
+    if match_let == 0:
+        return False
     return False
 
 
@@ -54,7 +57,7 @@ def _validate_letters_even(input_str):
 
 def _validate_numbers_odd(input_str):
     match_numb = [numb for numb in input_str if numb.isdigit()]
-    if not len(match_numb) % 2:
+    if len(match_numb) % 2:
         return True
     return False
 
