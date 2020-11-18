@@ -5,22 +5,23 @@ Admin может одобрить Review (статус меняется на "Pu
 """
 
 import uuid
+from customer import Customer
 
 
 class Review:
-    def __init__(self, header, text, mark, author, status='Moderation'):
+    def __init__(self, header, text, marker, customer, status='Moderation'):
         self._id = uuid.uuid4()
         self._header = header
         self._text = text
-        self._mark = mark
-        self._author = author
+        self._marker = marker
+        self._customer = customer
         self._status = status
 
     def __str__(self):
-        return f"{self._header} ( {self._mark} ) - {self._status}"
+        return f"{self._header} ( {self._marker} ) - {self._status}"
 
     def __repr__(self):
-        return f"{self._id} : {self._header} ( {self._mark} ) - {self._status}"
+        return f"{self._id} : {self._header} ( {self._marker} ) - {self._status}"
 
     @property
     def header(self):
@@ -40,20 +41,20 @@ class Review:
 
     @property
     def mark(self):
-        return self._mark
+        return self._marker
 
     @mark.setter
     def mark(self, value):
         if value < 1:
-            self._mark = 1
+            self._marker = 1
         elif value > 5:
-            self._mark = 5
+            self._marker = 5
         else:
-            self._mark = value
+            self._marker = value
 
     @property
-    def author(self):
-        return self._author
+    def customer(self):
+        return self._customer
 
     @property
     def status(self):
