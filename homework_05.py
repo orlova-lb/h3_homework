@@ -34,13 +34,28 @@ def get_text(text):
 # раширением .log из найденных
 
 
+logs_dict = dict()
+
+
 def log_reading(func):
     def wrapper(*args):
-        return [f for f in listdir(path) if isfile(join(path, f)) and f.endswith(".log")]
+        result = func(*args)
+        for file in result:
+            if file.endswith('.log'):
+                with open(file, 'r') as log_file:
+                    logs_dict[file] = log_file.read()
+        return result
+
     return wrapper
 
 
 @log_reading
-def get_files():
-    return os.listdir()
+def get_files(path):
+    file_list = list()
+    for item in os.listdir(path):
+        filename = os.path.join(path, item)
+        if os.path.isfile(filename):
+            file_list.append(filename)
+    return file_list
+
 
