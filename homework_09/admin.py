@@ -1,4 +1,5 @@
 import uuid
+from logger import logger
 from user import User
 
 
@@ -25,6 +26,8 @@ class Administrator(User):
         for supply in self.supply:
             if supply.item == order.item and supply.amount >= order.amount:
                 order.status = 'Confirmed'
+                logger.info(f"Status of '{order}' has been changed to 'confirmed'.")
                 return order
         order.status = 'On hold'
+        logger.info(f"Status of '{order}' has been changed to 'on hold'.")
         return order

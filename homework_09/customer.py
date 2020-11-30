@@ -1,5 +1,5 @@
 import uuid
-
+from logger import logger
 from user import User
 from order import Order
 
@@ -14,6 +14,7 @@ class Customer(User):
         self.date_of_birth = date_of_birth
         self.bonus_amount = 0
         self.orders = list()
+        logger.info(f"A customer '{self.first_name} {self.last_name}' was created.")
 
     def __str__(self):
         return f"Customer {self.id}: {self.username} ({self.first_name} {self.last_name})"
@@ -21,6 +22,7 @@ class Customer(User):
     def create_order(self, item, amount):
         new_order = Order(self, item, amount)
         self.orders.append(new_order)
+        logger.info(f"Created new order: {new_order}")
         return new_order
 
 

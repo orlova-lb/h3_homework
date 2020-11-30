@@ -6,6 +6,7 @@ Admin может одобрить Review (статус меняется на "Pu
 
 import uuid
 from customer import Customer
+from logger import logger
 
 
 class Review:

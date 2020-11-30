@@ -1,4 +1,5 @@
 import uuid
+from logger import logger
 
 
 class Order:
@@ -23,4 +24,4 @@ if __name__ == '__main__':
     i1 = Item("Banana", "Better than ever before", 799.0,
                 ("Golden", "Fresh Green"))
     o1 = Order(customer=c1, item=i1, amount=3)
-    print(o1)
+    logger.debug(o1)

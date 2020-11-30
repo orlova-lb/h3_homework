@@ -1,5 +1,5 @@
 import uuid
-
+from logger import logger
 
 class Item:
     def __init__(self, title, description, price, colors=("Black", )):
@@ -19,4 +19,4 @@ class Item:
 if __name__ == '__main__':
     i1 = Item("Banana", "Better than ever before", 799.0,
                 ("Golden", "Fresh Green"))
-    print(i1)
+    logger.debug(i1)

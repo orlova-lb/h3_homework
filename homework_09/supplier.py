@@ -1,8 +1,8 @@
 import uuid
-
 from user import User
 from item import Item
 from supply import Supply
+from logger import logger
 
 
 class Supplier(User):
@@ -32,4 +32,4 @@ class Supplier(User):
 if __name__ == '__main__':
     s1 = Supplier("isupply", "4real", "Crab Shack Company", "Van Crabs",
                 "000-112-35-8", "crab@shack.biz")
-    print(s1)
+    logger.debug(s1)

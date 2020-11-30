@@ -4,6 +4,8 @@ from item import Item
 from supply import Supply
 from order import Order
 from admin import Administrator
+from logger import logger
+
 
 supply = list()
 orders = list()
