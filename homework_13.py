@@ -13,8 +13,6 @@ def ponger(receiver, response):
 
 if __name__ == "__main__":
     ping, pong = Pipe()
-    process_1 = Process(target=ponger, args=(ping, 'Pong'))
-    process_2 = Process(target=ponger, args=(pong, 'Ping'))
-    process_1.start()
-    process_2.start()
+    Process(target=ponger, args=(ping, 'Pong')).start()
+    Process(target=ponger, args=(pong, 'Ping')).start()
     pong.send('Ping')
